@@ -1,0 +1,11 @@
+{
+  "lazy.nvim": { "branch": "main", "commit": "ebdd0499551765e6a7aba220cc8ae4e0cdb6be69" },
+  "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
+  "mason-lspconfig.nvim": { "branch": "main", "commit": "f0ce33f4794a2364eb08d09d09380e8b04ec5e6a" },
+  "mason.nvim": { "branch": "main", "commit": "08b2fd308e0107eab9f0b59d570b69089fd0b522" },
+  "nvim-web-devicons": { "branch": "master", "commit": "2a125024a137677930efcfdf720f205504c97268" },
+  "plenary.nvim": { "branch": "master", "commit": "52544825d6b8be677eb395983515ad5e30ae1f2e" },
+  "telescope.nvim": { "branch": "master", "commit": "c1a2af0af69e80e14e6b226d3957a064cd080805" },
+  "tokyonight.nvim": { "branch": "main", "commit": "cd5156f4b4a6c4c337a46deb0c0bd37319920833" },
+  "which-key.nvim": { "branch": "main", "commit": "e271c28118998c93a14d189af3395812a1aa646c" }
+}
