@@ -18,13 +18,17 @@ keymap("", "<Space>", "<Nop>", opts)
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+-- keymap("n", "<C-h>", "<C-w>h", opts)
+-- keymap("n", "<C-j>", "<C-w>j", opts)
+-- keymap("n", "<C-k>", "<C-w>k", opts)
+-- keymap("n", "<C-l>", "<C-w>l", opts)
+
+-- Buffer Navigation
+-- keymap("n", "<C-L>", "<cmd>bnext<CR>", opts)
+-- keymap("n", "<C-H>", "<cmd>bprevious<CR>", opts)
 
 -- File Explore
-keymap("n", "<leader>e", ":Lex 30<CR>", opts)
+keymap("n", "<leader>fe", ":NvimTreeToggle<CR>", opts)
 
 -- Cancel Highlight
 keymap("n", "<leader>nh", ":nohl<CR>", opts)

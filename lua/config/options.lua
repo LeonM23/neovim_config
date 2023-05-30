@@ -21,12 +21,16 @@ o.smartindent = true
 
 o.conceallevel = 0 		        -- so `` is visible in markdown file
 
+-- backup
+o.backup = false
+o.swapfile = false
+
 -- split
 o.splitbelow = true
 o.splitright = true
 
 -- system
-o.fileencoding = 'utf-8'
+o.fileencoding = "UTF-8"
 o.clipboard = "unnamedplus" 	-- allow nvim to access system clipboard
 o.mouse = "a" 		        	-- allow mouse to be used in neovim
 
@@ -34,4 +38,3 @@ o.mouse = "a" 		        	-- allow mouse to be used in neovim
 -- theme
 o.termguicolors = true
 o.signcolumn = "yes"            
-vim.cmd.colorscheme("tokyonight-night")
