@@ -1,18 +1,23 @@
-
 return {
-    "nvim-tree/nvim-tree.lua",            -- file explorer
+    "nvim-tree/nvim-tree.lua", -- file explorer
     config = function()
         require("nvim-tree").setup({
-          sort_by = "case_sensitive",
-          view = {
-            width = 30,
-          },
-          renderer = {
-            group_empty = true,
-          },
-          filters = {
-            dotfiles = true,
-          },
+            sort_by = "case_sensitive",
+            view = {
+                width = 30,
+            },
+            renderer = {
+                group_empty = true,
+            },
+            filters = {
+                dotfiles = true,
+            },
+            -- 关闭文件时自动关闭
+            auto_close = true,
+            -- 不显示 git 状态图标
+            git = {
+                enable = false
+            }
         })
     end
 }

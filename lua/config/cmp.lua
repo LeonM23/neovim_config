@@ -13,31 +13,31 @@ end
 require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./my-cool-snippets" } })
 
 local kind_icons = {
-  Text = "󰊄",
-  Method = "m",
-  Function = "󰊕",
-  Constructor = "",
-  Field = "",
-  Variable = "󰫧",
-  Class = "",
-  Interface = "",
-  Module = "",
-  Property = "",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "=",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = "",
+    Text = "󰊄",
+    Method = "m",
+    Function = "󰊕",
+    Constructor = "",
+    Field = "",
+    Variable = "󰫧",
+    Class = "",
+    Interface = "",
+    Module = "",
+    Property = "",
+    Unit = "",
+    Value = "",
+    Enum = "",
+    Keyword = "",
+    Snippet = "",
+    Color = "",
+    File = "",
+    Reference = "",
+    Folder = "",
+    EnumMember = "",
+    Constant = "=",
+    Struct = "",
+    Event = "",
+    Operator = "",
+    TypeParameter = "",
 }
 
 
@@ -45,14 +45,14 @@ local kind_icons = {
 -- setup cmp
 cmp.setup({
     snippet = {
-      -- REQUIRED - you must specify a snippet engine
-      expand = function(args)
-        luasnip.lsp_expand(args.body) -- For `luasnip` users.
-      end,
+        -- REQUIRED - you must specify a snippet engine
+        expand = function(args)
+            luasnip.lsp_expand(args.body) -- For `luasnip` users.
+        end,
     },
     window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
+        -- completion = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-k>'] = cmp.mapping.select_prev_item(),
@@ -62,31 +62,31 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      
+
         ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expandable() then
-                luasnip.expand()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            else
-                fallback()
-            end
-        end, 
-        { "i", "s", }
+                if cmp.visible() then
+                    cmp.select_next_item()
+                elseif luasnip.expandable() then
+                    luasnip.expand()
+                elseif luasnip.expand_or_jumpable() then
+                    luasnip.expand_or_jump()
+                else
+                    fallback()
+                end
+            end,
+            { "i", "s", }
         ),
 
         ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end, 
-        { "i", "s", }
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                elseif luasnip.jumpable(-1) then
+                    luasnip.jump(-1)
+                else
+                    fallback()
+                end
+            end,
+            { "i", "s", }
         ),
     }),
 
@@ -106,7 +106,7 @@ cmp.setup({
 
     sources = cmp.config.sources({
         -- { name = 'nvim_lsp' },
-        { name = 'luasnip' },    -- For luasnip users. 
+        { name = 'luasnip' }, -- For luasnip users.
         { name = 'buffer' },
         { name = 'path' },
     }),
@@ -125,5 +125,21 @@ cmp.setup.filetype('gitcommit', {
         { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
     }, {
         { name = 'buffer' },
+    })
+})
+
+-- Use buffer source for `/`.
+cmp.setup.cmdline('/', {
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
+-- Use cmdline & path source for ':'.
+cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
     })
 })

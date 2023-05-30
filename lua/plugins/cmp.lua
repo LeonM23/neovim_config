@@ -7,5 +7,5 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     -- snippet
     "L3MON4D3/LuaSnip",
-    "rafamadriz/friendly-snippets", 
+    "rafamadriz/friendly-snippets",
 }

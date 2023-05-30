@@ -8,7 +8,7 @@ M.capabilities = vim.lsp.protocol.make_client_capabilities()
 -- protected call to get the cmp
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
-  return
+    return
 end
 
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -17,11 +17,11 @@ M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 -- Here we declare the setup function and add the modifications in signs and extra configs, like virtual text, false update_in_insert, rounded borders for float windows, etc.
 M.setup = function()
     local signs = {
-    -- change the "?" to an icon that you like  
+        -- change the "?" to an icon that you like
         { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
-        { name = "DiagnosticSignInfo", text = "" },
+        { name = "DiagnosticSignWarn",  text = "" },
+        { name = "DiagnosticSignHint",  text = "" },
+        { name = "DiagnosticSignInfo",  text = "" },
     }
 
     for _, sign in ipairs(signs) do
@@ -32,7 +32,7 @@ M.setup = function()
         virtual_text = true,
         -- show signs
         signs = {
-          active = signs,
+            active = signs,
         },
         update_in_insert = false,
         underline = true,
@@ -44,7 +44,6 @@ end
 
 -- Here we set up keymaps. You can change them if you already have specifics for these functions, or just want to try another keymap.
 local function lsp_keymaps(bufnr)
-
     local opts = { buffer = bufnr.buf, noremap = true, silent = true }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
@@ -61,7 +60,7 @@ local function lsp_keymaps(bufnr)
     -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
     -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<leader>fp', function()
-      vim.lsp.buf.format { async = true }
+        vim.lsp.buf.format { async = true }
     end, opts)
 
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
@@ -72,7 +71,7 @@ end
 local lsp_formatting = function(bufnr)
     vim.lsp.buf.format({
         filter = function(client)
-          return client.name == "null-ls"
+            return client.name == "null-ls"
         end,
         bufnr = bufnr,
     })
@@ -84,7 +83,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 M.on_attach = function(client, bufnr)
     lsp_keymaps(bufnr)
     if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })    
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
         vim.api.nvim_create_autocmd("BufWritePre", {
             group = augroup,
             buffer = bufnr,
