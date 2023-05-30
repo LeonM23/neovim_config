@@ -44,24 +44,29 @@ end
 
 -- Here we set up keymaps. You can change them if you already have specifics for these functions, or just want to try another keymap.
 local function lsp_keymaps(bufnr)
-    local opts = { buffer = bufnr.buf, noremap = true, silent = true }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-    -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-    -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
+        { buffer = bufnr, noremap = true, silent = true, desc = "go to declaration" })
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
+        { buffer = bufnr, noremap = true, silent = true, desc = "go to definition" })
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, noremap = true, silent = true, desc = "hover" })
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
+        { buffer = bufnr, noremap = true, silent = true, desc = "go to implementation" })
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references,
+        { buffer = bufnr, noremap = true, silent = true, desc = "go to references" })
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help,
+        { buffer = bufnr, noremap = true, silent = true, desc = "signature_help" })
+    -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { buffer = bufnr, noremap = true, silent = true})
+    -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { buffer = bufnr, noremap = true, silent = true})
     -- vim.keymap.set('n', '<space>wl', function()
     --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    -- end, opts)
-    -- vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-    -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', '<leader>fp', function()
+    -- end, { buffer = bufnr, noremap = true, silent = true})
+    -- vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, { buffer = bufnr, noremap = true, silent = true})
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,
+        { buffer = bufnr, noremap = true, silent = true, desc = "rename" })
+    -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { buffer = bufnr, noremap = true, silent = true})
+    vim.keymap.set('n', '<leader>ff', function()
         vim.lsp.buf.format { async = true }
-    end, opts)
+    end, { buffer = bufnr, noremap = true, silent = true, desc = "format file" })
 
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 end
