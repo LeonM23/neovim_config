@@ -3,9 +3,9 @@ return {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
     keys = {
-        { "<leader>fp", "<cmd>Telescope find_files<cr>", desc = "find files" },
-        { "<leader>fg", "<cmd>Telescope live_grep<cr>",  desc = "live grep" },
-        { "<leader>fb", "<cmd>Telescope buffers<cr>",    desc = "buffers" },
-        { "<leader>fh", "<cmd>Telescope help_tags<cr>",  desc = "help tags" },
+        { "<leader>fs", "<cmd>Telescope find_files<cr>", desc = "file search" },
+        { "<leader>fg", "<cmd>Telescope live_grep<cr>",  desc = "file grep" },
+        { "<leader>fb", "<cmd>Telescope buffers<cr>",    desc = "find buffers" },
+        { "<leader>fh", "<cmd>Telescope help_tags<cr>",  desc = "find help tags" },
     },
 }

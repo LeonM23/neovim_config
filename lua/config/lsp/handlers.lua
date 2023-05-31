@@ -53,7 +53,7 @@ local function lsp_keymaps(bufnr)
         { buffer = bufnr, noremap = true, silent = true, desc = "go to implementation" })
     vim.keymap.set('n', 'gr', vim.lsp.buf.references,
         { buffer = bufnr, noremap = true, silent = true, desc = "go to references" })
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help,
+    vim.keymap.set('n', '<S-k>', vim.lsp.buf.signature_help,
         { buffer = bufnr, noremap = true, silent = true, desc = "signature_help" })
     -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { buffer = bufnr, noremap = true, silent = true})
     -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { buffer = bufnr, noremap = true, silent = true})

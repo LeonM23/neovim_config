@@ -8,21 +8,6 @@ local keymap = vim.api.nvim_set_keymap
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
--- Normal --
--- Better window navigation
--- keymap("n", "<S-h>", "<C-w>h", opts)
--- keymap("n", "<S-j>", "<C-w>j", opts)
--- keymap("n", "<S-k>", "<C-w>k", opts)
--- keymap("n", "<S-l>", "<C-w>l", opts)
-
 -- Buffer Navigation
 -- keymap("n", "<C-L>", "<cmd>bnext<CR>", opts)
 -- keymap("n", "<C-H>", "<cmd>bprevious<CR>", opts)
@@ -42,20 +27,23 @@ keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<leader>bl", ":bnext<CR>", opts)
+keymap("n", "<leader>bh", ":bprevious<CR>", opts)
+keymap("n", "<leader>bd", ":Bdelete<CR>", opts) -- delete buffers
+
+-- Navigate windows
+keymap("n", "<leader>w", "<c-w>", opts)
 
 -- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
+keymap("i", "jk", "<ESC>", opts) -- Press jk fast to enter
 
 -- Visual --
--- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
--- keymap("v", "<A-j>", ":m .+1<CR>==", opts)
--- keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
+keymap("n", "<C-s>", ":w<CR>", opts)
 
 -- Visual Block --
 -- Move text up and down

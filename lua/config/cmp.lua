@@ -96,7 +96,8 @@ cmp.setup({
             -- NOTE: order matters
             vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
             vim_item.menu = ({
-                luasnip = "[LSP]",
+                nvim_lsp = "[LSP]",
+                luasnip = "[Snippet]",
                 buffer = "[Buffer]",
                 path = "[Path]",
             })[entry.source.name]
@@ -105,7 +106,7 @@ cmp.setup({
     },
 
     sources = cmp.config.sources({
-        -- { name = 'nvim_lsp' },
+        { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.
         { name = 'buffer' },
         { name = 'path' },
