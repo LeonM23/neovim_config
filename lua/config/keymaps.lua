@@ -1,60 +1,63 @@
-local opts = { noremap = true, silent = true }
+local opt = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
+local term_opt = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
-
--- Buffer Navigation
--- keymap("n", "<C-L>", "<cmd>bnext<CR>", opts)
--- keymap("n", "<C-H>", "<cmd>bprevious<CR>", opts)
-
 -- File Explore
-keymap("n", "<leader>fe", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>fe", ":NvimTreeToggle<CR>", { silent = true, noremap = true, desc = "File Explore" })
 
 -- Cancel Highlight
-keymap("n", "<leader>nh", ":nohl<CR>", opts)
+keymap("n", "<leader>nh", ":nohl<CR>", { silent = true, noremap = true, desc = "cancel highlight" })
 
 -- Resize with arrows
-keymap("n", "<A-Up>", ":resize +2<CR>", opts)
-keymap("n", "<A-Down>", ":resize -2<CR>", opts)
-keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<A-Up>", ":resize +2<CR>", { silent = true, noremap = true, desc = "resize +2" })
+keymap("n", "<A-Down>", ":resize -2<CR>", { silent = true, noremap = true, desc = "resize -2" })
+keymap("n", "<A-Left>", ":vertical resize -2<CR>", { silent = true, noremap = true, desc = "vresize +2" })
+keymap("n", "<A-Right>", ":vertical resize +2<CR>", { silent = true, noremap = true, desc = "vresize -2" })
 
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
-keymap("n", "<leader>bl", ":bnext<CR>", opts)
-keymap("n", "<leader>bh", ":bprevious<CR>", opts)
-keymap("n", "<leader>bd", ":Bdelete<CR>", opts) -- delete buffers
+-- buffers
+keymap("n", "<S-l>", ":bnext<CR>", { silent = true, noremap = true, desc = "next buffer" })
+keymap("n", "<S-h>", ":bprevious<CR>", { silent = true, noremap = true, desc = "previous buffer" })
+keymap("n", "<leader>bl", ":bnext<CR>", { silent = true, noremap = true, desc = "next buffer" })
+keymap("n", "<leader>bh", ":bprevious<CR>", { silent = true, noremap = true, desc = "previous buffer" })
+keymap("n", "<leader>bd", ":Bdelete<CR>", { silent = true, noremap = true, desc = "close buffer" })      -- delete buffers
+keymap("n", "<leader>bo", ":%Bdelete<CR>", { silent = true, noremap = true, desc = "close all buffer" }) -- delete buffers
 
--- Navigate windows
-keymap("n", "<leader>w", "<c-w>", opts)
+-- windows
+keymap("n", "<leader>w", "<c-w>", { silent = true, noremap = true, desc = "windows" })
+keymap("n", "<leader>wd", "<c-w>q", { silent = true, noremap = true, desc = "close window" })
 
 -- Insert --
-keymap("i", "jk", "<ESC>", opts) -- Press jk fast to enter
+keymap("i", "jk", "<ESC>", { silent = true, noremap = true, desc = "return to normal" }) -- Press jk fast to enter
 
 -- Visual --
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+keymap("v", "<", "<gv", { silent = true, noremap = true, desc = "indent <" })
+keymap("v", ">", ">gv", { silent = true, noremap = true, desc = "indent >" })
 
--- Move text up and down
-keymap("v", "p", '"_dP', opts)
-keymap("n", "<C-s>", ":w<CR>", opts)
+keymap("v", "p", '"_dP', { silent = true, noremap = true, desc = "safe pase" })
+keymap("n", "<C-s>", ":w<CR>", { silent = true, noremap = true, desc = "save file" })
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J", ":move '>+1<CR>gv-gv", { silent = true, noremap = true, desc = "move down" })
+keymap("x", "K", ":move '<-2<CR>gv-gv", { silent = true, noremap = true, desc = "move up" })
+-- keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", {silent=true, noremap=true, desc=""})
 
 -- Terminal --
 -- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", { silent = true, noremap = true, desc = "terminal left " })
+keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", { silent = true, noremap = true, desc = "terminal down" })
+keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", { silent = true, noremap = true, desc = "terminal up" })
+keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", { silent = true, noremap = true, desc = "terminal right" })
+
+-- Persistence
+-- restore the session for the current directory
+keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]],
+    { desc = "restore the session for the current directory" })
+-- restore the last session
+keymap("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<cr>]],
+    { desc = "restore the last session" })
+-- stop Persistence => session won't be saved on exit
+keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], { desc = "stop Persistence" })
