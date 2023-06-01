@@ -13,10 +13,11 @@ null_ls.setup({
 
     -- the sources are prettier, eslint_d and rubocop
     sources = {
-        formatting.prettier,
-        formatting.yapf,
-        formatting.clang_format,
-        diagnostics.pylint,
-        diagnostics.cpplint,
+        formatting.prettier,     -- javascript
+        formatting.yapf,         -- python
+        formatting.clang_format, -- c, cpp
+        formatting.stylua,       -- lua
+        diagnostics.pylint,      -- python
+        diagnostics.cpplint,     -- c, cpp
     },
 })
