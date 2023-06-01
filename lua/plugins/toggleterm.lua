@@ -7,7 +7,13 @@ return {
 		end
 
 		toggleterm.setup({
-			size = 20,
+			size = function(term)
+				if term.direction == "horizontal" then
+					return vim.o.lines * 0.2
+				elseif term.direction == "vertical" then
+					return vim.o.columns * 0.4
+				end
+			end,
 			open_mapping = [[<c-\>]],
 			hide_numbers = true,
 			shade_filetypes = {},
