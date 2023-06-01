@@ -1,7 +1,3 @@
-local opt = { noremap = true, silent = true }
-
-local term_opt = { silent = true }
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
@@ -22,7 +18,7 @@ keymap("n", "<S-l>", ":bnext<CR>", { silent = true, noremap = true, desc = "next
 keymap("n", "<S-h>", ":bprevious<CR>", { silent = true, noremap = true, desc = "previous buffer" })
 keymap("n", "<leader>bl", ":bnext<CR>", { silent = true, noremap = true, desc = "next buffer" })
 keymap("n", "<leader>bh", ":bprevious<CR>", { silent = true, noremap = true, desc = "previous buffer" })
-keymap("n", "<leader>bd", ":Bdelete<CR>", { silent = true, noremap = true, desc = "close buffer" })      -- delete buffers
+keymap("n", "<leader>bd", ":Bdelete<CR>", { silent = true, noremap = true, desc = "close buffer" }) -- delete buffers
 keymap("n", "<leader>bo", ":%Bdelete<CR>", { silent = true, noremap = true, desc = "close all buffer" }) -- delete buffers
 
 -- windows
@@ -54,10 +50,20 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", { silent = true, noremap = true, desc 
 
 -- Persistence
 -- restore the session for the current directory
-keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]],
-    { desc = "restore the session for the current directory" })
+keymap(
+	"n",
+	"<leader>qs",
+	[[<cmd>lua require("persistence").load()<cr>]],
+	{ desc = "restore the session for the current directory" }
+)
 -- restore the last session
-keymap("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<cr>]],
-    { desc = "restore the last session" })
+keymap(
+	"n",
+	"<leader>ql",
+	[[<cmd>lua require("persistence").load({ last = true })<cr>]],
+	{ desc = "restore the last session" }
+)
 -- stop Persistence => session won't be saved on exit
 keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], { desc = "stop Persistence" })
+keymap("n", "<leader>qq", "<cmd>q<CR>", { desc = "quit current window" })
+keymap("n", "<leader>qa", "<cmd>qa<CR>", { desc = "quit all window" })
