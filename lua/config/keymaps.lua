@@ -18,8 +18,12 @@ keymap("n", "<S-l>", ":bnext<CR>", { silent = true, noremap = true, desc = "next
 keymap("n", "<S-h>", ":bprevious<CR>", { silent = true, noremap = true, desc = "previous buffer" })
 keymap("n", "<leader>bl", ":bnext<CR>", { silent = true, noremap = true, desc = "next buffer" })
 keymap("n", "<leader>bh", ":bprevious<CR>", { silent = true, noremap = true, desc = "previous buffer" })
-keymap("n", "<leader>bd", ":Bdelete<CR>", { silent = true, noremap = true, desc = "close buffer" }) -- delete buffers
-keymap("n", "<leader>bo", ":%Bdelete<CR>", { silent = true, noremap = true, desc = "close all buffer" }) -- delete buffers
+keymap("n", "<leader>bk", ":blast<CR>", { silent = true, noremap = true, desc = "last buffer" })
+keymap("n", "<leader>bj", ":bfirst<CR>", { silent = true, noremap = true, desc = "first buffer" })
+keymap("n", "<leader>bd", ":Bdelete<CR>", { silent = true, noremap = true, desc = "close buffer" })
+keymap("n", "<leader>bs", ":buffers<CR>", { silent = true, noremap = true, desc = "show all buffers" })
+keymap("n", "<leader>be", ":edit ", { silent = true, noremap = true, desc = "open buffer with file" })
+keymap("n", "<leader>bo", ":%Bdelete<CR>", { silent = true, noremap = true, desc = "close all buffer" })
 
 -- windows
 keymap("n", "<leader>w", "<c-w>", { silent = true, noremap = true, desc = "windows" })
