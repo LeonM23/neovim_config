@@ -21,6 +21,7 @@ keymap("n", "<leader>bh", ":bprevious<CR>", { silent = true, noremap = true, des
 keymap("n", "<leader>bk", ":blast<CR>", { silent = true, noremap = true, desc = "last buffer" })
 keymap("n", "<leader>bj", ":bfirst<CR>", { silent = true, noremap = true, desc = "first buffer" })
 keymap("n", "<leader>bd", ":Bdelete<CR>", { silent = true, noremap = true, desc = "close buffer" })
+keymap("n", "<leader>bc", ":Bdelete<CR>", { silent = true, noremap = true, desc = "close buffer" })
 keymap("n", "<leader>bs", ":buffers<CR>", { silent = true, noremap = true, desc = "show all buffers" })
 keymap("n", "<leader>be", ":edit ", { silent = true, noremap = true, desc = "open buffer with file" })
 keymap("n", "<leader>bo", ":%Bdelete<CR>", { silent = true, noremap = true, desc = "close all buffer" })
